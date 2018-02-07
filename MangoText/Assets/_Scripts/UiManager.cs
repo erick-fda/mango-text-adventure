@@ -42,12 +42,12 @@ public class UiManager : MonoBehaviour
 	----------------------------------------------------------------------------------------*/
     private void Awake()
     {
-        GameManager.Instance.Ui = this;
         DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
+        GameManager.Instance.Ui = this;
         CheckForNullReferences();
     }
     

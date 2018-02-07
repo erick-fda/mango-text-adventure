@@ -1,7 +1,7 @@
 ﻿/*========================================================================================
-    GameManager                                                                      *//**
+    MapNode                                                                          *//**
 	
-    Manages game initalization and dialogue stacks.
+    A node in a level map.
 	
     Copyright 2017 Erick Fernandez de Arteaga. All rights reserved.
         https://www.linkedin.com/in/erick-fda
@@ -13,70 +13,51 @@
 	Dependencies
 ========================================================================================*/
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using MangoText.Constants;
 
 /*========================================================================================
-	GameManager
+	MapNode
 ========================================================================================*/
 namespace MangoText
 {
-public class GameManager : SingletonMonoBehaviour<GameManager>
+public class MapNode : MonoBehaviour
 {
 	/*----------------------------------------------------------------------------------------
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
-    public SceneId _initialScene;
+	public GameObject _armUp;
+	public GameObject _armDown;
+	public GameObject _armLeft;
+	public GameObject _armRight;
 
-	private UiManager _uiManager;
+    public MapNode _adjacentUp;
+    public MapNode _adjacentDown;
+    public MapNode _adjacentLeft;
+    public MapNode _adjacentRight;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
 	----------------------------------------------------------------------------------------*/
-    public UiManager Ui
-    {
-        get { return _uiManager; }
-
-        set
-        {
-            if (_uiManager != null)
-            {
-                throw new System.InvalidOperationException(
-                    "GameManager.Ui.set: _uiManager is only permitted to be set when it is null.");
-            }
-
-            _uiManager = value;
-        }
-    }
+	
     
 	/*----------------------------------------------------------------------------------------
 		MonoBehaviour Methods
 	----------------------------------------------------------------------------------------*/
     private void Awake()
     {
-        EnforceSingletonCreation(this);
-    }
-
-    private void Start()
-    {
-        CheckForNullReferences();
-        SceneManager.LoadScene((int)_initialScene);
+        UpdateArms();
     }
     
-	private void OnDestroy()
-    {
-        EnforceSingletonDestruction(this);
-    }
-
 	/*----------------------------------------------------------------------------------------
 		Instance Methods
 	----------------------------------------------------------------------------------------*/
-    private void CheckForNullReferences()
+	/**
+        Enables arms that connect to other nodes and disables those that do not.
+    */
+    private void UpdateArms()
     {
-        if (Ui == null)
-        {
-            throw new System.NullReferenceException(
-                "GameManager.CheckForNulls: Ui is not permitted to be null.");
-        }
+        _armUp.SetActive(_adjacentUp != null);
+        _armDown.SetActive(_adjacentDown != null);
+        _armLeft.SetActive(_adjacentLeft != null);
+        _armRight.SetActive(_adjacentRight != null);
     }
 }}
