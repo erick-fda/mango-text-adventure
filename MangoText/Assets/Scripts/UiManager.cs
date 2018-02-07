@@ -1,7 +1,7 @@
 ﻿/*========================================================================================
-    GameManager                                                                      *//**
+    UiManager                                                                        *//**
 	
-    Manages game initalization and dialogue stacks.
+    Manages access to the UI canvas.
 	
     Copyright 2017 Erick Fernandez de Arteaga. All rights reserved.
         https://www.linkedin.com/in/erick-fda
@@ -13,36 +13,28 @@
 	Dependencies
 ========================================================================================*/
 using UnityEngine;
+using UnityEngine.UI;
 
 /*========================================================================================
-	GameManager
+	MyMonoBehaviour
 ========================================================================================*/
 namespace MangoText
 {
-public class GameManager : SingletonMonoBehaviour<GameManager>
+public class UiManager : MonoBehaviour
 {
 	/*----------------------------------------------------------------------------------------
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
-	private UiManager _uiManager;
+	public Text _mainText;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
 	----------------------------------------------------------------------------------------*/
-    public UiManager Ui
+	public string MainText
     {
-        get { return _uiManager; }
+        get { return _mainText.text; }
 
-        set
-        {
-            if (_uiManager != null)
-            {
-                throw new System.InvalidOperationException(
-                    "GameManager.UiManager.set: UiManager is only permitted to be set when it is null.");
-            }
-
-            _uiManager = value;
-        }
+        set { _mainText.text = value; }
     }
     
 	/*----------------------------------------------------------------------------------------
@@ -50,28 +42,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 	----------------------------------------------------------------------------------------*/
     private void Awake()
     {
-        EnforceSingletonCreation(this);
-    }
-
-    private void Start()
-    {
-        CheckForNulls();
+        Init();
     }
     
-	private void OnDestroy()
-    {
-        EnforceSingletonDestruction(this);
-    }
-
 	/*----------------------------------------------------------------------------------------
 		Instance Methods
 	----------------------------------------------------------------------------------------*/
-    private void CheckForNulls()
+	private void Init()
     {
-        if (Ui == null)
-        {
-            throw new System.NullReferenceException(
-                "GameManager.CheckForNulls: UiManager is not permitted to be null.");
-        }
+        GameManager.Instance.Ui = this;
+        DontDestroyOnLoad(gameObject);
     }
 }}
