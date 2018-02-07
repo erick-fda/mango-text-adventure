@@ -281,22 +281,7 @@ Prefab:
     - target: {fileID: 224230268199081708, guid: 0e7d781a42c336445958075ada6205f8,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224192851111233680, guid: 0e7d781a42c336445958075ada6205f8,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224192851111233680, guid: 0e7d781a42c336445958075ada6205f8,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224192851111233680, guid: 0e7d781a42c336445958075ada6205f8,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: -50
+      value: 1589.4375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e7d781a42c336445958075ada6205f8, type: 2}
@@ -426,11 +411,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114351996260052200, guid: d5ad10125b10e42429f5a7b226159cfb,
         type: 2}
-      propertyPath: _mainCanvas
-      value: 
-      objectReference: {fileID: 2139416295}
-    - target: {fileID: 114351996260052200, guid: d5ad10125b10e42429f5a7b226159cfb,
-        type: 2}
       propertyPath: _mainText
       value: 
       objectReference: {fileID: 1241936864}
@@ -484,8 +464,3 @@ Camera:
   m_PrefabParentObject: {fileID: 20553605714250424, guid: 496218e1c126c3c41be78be8fd5c07f8,
     type: 2}
   m_PrefabInternal: {fileID: 1734278046}
---- !u!223 &2139416295 stripped
-Canvas:
-  m_PrefabParentObject: {fileID: 223532006756356080, guid: 0e7d781a42c336445958075ada6205f8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1280072568}

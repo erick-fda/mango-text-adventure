@@ -25,7 +25,6 @@ public class UiManager : MonoBehaviour
 	/*----------------------------------------------------------------------------------------
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
-	public Canvas _mainCanvas;
     public Text _mainText;
     
 	/*----------------------------------------------------------------------------------------
@@ -45,7 +44,6 @@ public class UiManager : MonoBehaviour
     {
         GameManager.Instance.Ui = this;
         DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(_mainCanvas);
     }
 
     private void Start()
@@ -58,12 +56,6 @@ public class UiManager : MonoBehaviour
 	----------------------------------------------------------------------------------------*/
     private void CheckForNullReferences()
     {
-        if (_mainCanvas == null)
-        {
-            throw new System.NullReferenceException(
-                "UiManager.CheckForNullReferences: _mainCanvas is not permitted to be null.");
-        }
-
         if (_mainText == null)
         {
             throw new System.NullReferenceException(

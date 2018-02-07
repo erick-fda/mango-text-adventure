@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4139474432463446}
   - component: {fileID: 20958989426621330}
   - component: {fileID: 124602990043521288}
+  - component: {fileID: 114295267151627864}
   m_Layer: 0
   m_Name: Map Camera
   m_TagString: MainCamera
@@ -77,6 +78,17 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &114295267151627864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396367576133100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bceb8df715a7e429b3745621e7d21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &124602990043521288
 Behaviour:
   m_ObjectHideFlags: 1
