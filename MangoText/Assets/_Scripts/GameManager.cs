@@ -38,7 +38,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             if (_uiManager != null)
             {
                 throw new System.InvalidOperationException(
-                    "GameManager.UiManager.set: UiManager is only permitted to be set when it is null.");
+                    "GameManager.Ui.set: _uiManager is only permitted to be set when it is null.");
             }
 
             _uiManager = value;
@@ -55,7 +55,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void Start()
     {
-        CheckForNulls();
+        CheckForNullReferences();
     }
     
 	private void OnDestroy()
@@ -66,12 +66,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 	/*----------------------------------------------------------------------------------------
 		Instance Methods
 	----------------------------------------------------------------------------------------*/
-    private void CheckForNulls()
+    private void CheckForNullReferences()
     {
         if (Ui == null)
         {
             throw new System.NullReferenceException(
-                "GameManager.CheckForNulls: UiManager is not permitted to be null.");
+                "GameManager.CheckForNulls: Ui is not permitted to be null.");
         }
     }
 }}

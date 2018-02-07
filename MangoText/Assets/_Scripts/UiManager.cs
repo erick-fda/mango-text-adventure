@@ -25,7 +25,8 @@ public class UiManager : MonoBehaviour
 	/*----------------------------------------------------------------------------------------
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
-	public Text _mainText;
+	public Canvas _mainCanvas;
+    public Text _mainText;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
@@ -42,15 +43,31 @@ public class UiManager : MonoBehaviour
 	----------------------------------------------------------------------------------------*/
     private void Awake()
     {
-        Init();
+        GameManager.Instance.Ui = this;
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_mainCanvas);
+    }
+
+    private void Start()
+    {
+        CheckForNullReferences();
     }
     
 	/*----------------------------------------------------------------------------------------
 		Instance Methods
 	----------------------------------------------------------------------------------------*/
-	private void Init()
+    private void CheckForNullReferences()
     {
-        GameManager.Instance.Ui = this;
-        DontDestroyOnLoad(gameObject);
+        if (_mainCanvas == null)
+        {
+            throw new System.NullReferenceException(
+                "UiManager.CheckForNullReferences: _mainCanvas is not permitted to be null.");
+        }
+
+        if (_mainText == null)
+        {
+            throw new System.NullReferenceException(
+                "UiManager.CheckForNullReferences: _mainText is not permitted to be null.");
+        }
     }
 }}
