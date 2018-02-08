@@ -70,12 +70,12 @@ public class MapNodeEditor : Editor
 
     public override void OnInspectorGUI ()
     {
-        serializedObject.Update ();
+        serializedObject.Update();
         
-        DrawArmList();
         DrawAdjacentNodeList();
+        DrawArmList();
 
-        serializedObject.ApplyModifiedProperties ();
+        serializedObject.ApplyModifiedProperties();
     }
     
 	/*----------------------------------------------------------------------------------------
