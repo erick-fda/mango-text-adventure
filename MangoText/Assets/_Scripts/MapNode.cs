@@ -19,6 +19,7 @@ using UnityEngine;
 ========================================================================================*/
 namespace MangoText
 {
+[ExecuteInEditMode]
 public class MapNode : MonoBehaviour
 {
 	/*----------------------------------------------------------------------------------------
@@ -46,18 +47,65 @@ public class MapNode : MonoBehaviour
     {
         UpdateArms();
     }
+
+    private void Update()
+    {
+        if (!Application.isPlaying)
+        {
+            UpdateArms();
+        }
+    }
     
 	/*----------------------------------------------------------------------------------------
 		Instance Methods
 	----------------------------------------------------------------------------------------*/
 	/**
-        Enables arms that connect to other nodes and disables those that do not.
+        Updates all adjacent nodes and arms.
+
+        For every null node, the arm that connects to it is set inactive.
+        
+        For every non-null node, the arm that connects to it and its corresponding arm 
+        are both set active.
     */
     private void UpdateArms()
     {
-        _armUp.SetActive(_adjacentUp != null);
-        _armDown.SetActive(_adjacentDown != null);
-        _armLeft.SetActive(_adjacentLeft != null);
-        _armRight.SetActive(_adjacentRight != null);
+        GameObject adjacentNodeArm;
+
+        /* Update arm up. */
+        adjacentNodeArm = (_adjacentUp == null) ? null : _adjacentUp._armDown;
+        UpdateSingleArm(_armUp, _adjacentUp, adjacentNodeArm);
+
+        /* Update arm down. */
+        adjacentNodeArm = (_adjacentDown == null) ? null : _adjacentDown._armUp;
+        UpdateSingleArm(_armDown, _adjacentDown, adjacentNodeArm);
+        
+        /* Update arm left. */
+        adjacentNodeArm = (_adjacentLeft == null) ? null : _adjacentLeft._armRight;
+        UpdateSingleArm(_armLeft, _adjacentLeft, adjacentNodeArm);
+        
+        /* Update arm right. */
+        adjacentNodeArm = (_adjacentRight == null) ? null : _adjacentRight._armLeft;
+        UpdateSingleArm(_armRight, _adjacentRight, adjacentNodeArm);
+    }
+
+    /**
+        Updates the given arm, adjacent node, and corresponding adjacent node arm.
+
+        If the node is null, the arm that connects to it is set inactive.
+        
+        If the node is not null, the arm that connects to it and its corresponding arm 
+        are both set active.
+    */
+    private void UpdateSingleArm(GameObject arm, MapNode adjacentNode, GameObject adjacentNodeArm)
+    {
+        if (adjacentNode == null)
+        {
+            arm.SetActive(false);
+        }
+        else
+        {
+            arm.SetActive(true);
+            adjacentNodeArm.SetActive(true);
+        }
     }
 }}
