@@ -30,7 +30,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour
 		Class Properties
 	----------------------------------------------------------------------------------------*/
 	/**
-        Readonly property indicating whether the singleton is accessible.
+        Readonly static property indicating whether the singleton is accessible.
 
         This property will return false before initialization and after the singleton has 
         been flagged for destruction. Accessing this property will not trigger singleton 
@@ -58,14 +58,6 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour
 
 	/**
         Singleton instance access property for subclasses.
-        Subclasses should define their own "Instance" property for accessing this one.
-
-        On initialization, if any instances of the singleton are found that were not 
-        created within the class (such as any included in an Editor scene hierarchy), 
-        an IllegalSingletonMonoBehaviourException is thrown.
-
-        @throws IllegalSingletonException - If any singleton instances not created by the 
-                    class are found.
      */
     public static T Instance
     {

@@ -86,20 +86,22 @@ public class MapNodeEditor : Editor
     */
     private void DrawArmList()
     {
-        EditorGUILayout.BeginVertical (GUI.skin.box);
-        EditorGUI.indentLevel++;
+        EditorGUILayout.BeginVertical();
         
-            _showArmFields = EditorGUILayout.Foldout(_showArmFields, "Arms");
+        _showArmFields = EditorGUILayout.Foldout(_showArmFields, "Arms");
 
-            if (_showArmFields)
-            {
-                EditorGUILayout.PropertyField(_armUpProperty);
-                EditorGUILayout.PropertyField(_armDownProperty);
-                EditorGUILayout.PropertyField(_armLeftProperty);
-                EditorGUILayout.PropertyField(_armRightProperty);
-            }
+        if (_showArmFields)
+        {
+            EditorGUI.indentLevel++;
 
-        EditorGUI.indentLevel--;
+            EditorGUILayout.PropertyField(_armUpProperty);
+            EditorGUILayout.PropertyField(_armDownProperty);
+            EditorGUILayout.PropertyField(_armLeftProperty);
+            EditorGUILayout.PropertyField(_armRightProperty);
+
+            EditorGUI.indentLevel--;
+        }
+
         EditorGUILayout.EndVertical ();
     }
 
@@ -108,20 +110,22 @@ public class MapNodeEditor : Editor
     */
     private void DrawAdjacentNodeList()
     {
-        EditorGUILayout.BeginVertical (GUI.skin.box);
-        EditorGUI.indentLevel++;
+        EditorGUILayout.BeginVertical();
         
-            _showAdjacentNodeFields = EditorGUILayout.Foldout(_showAdjacentNodeFields, "Adjacent Nodes");
+        _showAdjacentNodeFields = EditorGUILayout.Foldout(_showAdjacentNodeFields, "Adjacent Nodes");
 
-            if (_showAdjacentNodeFields)
-            {
-                EditorGUILayout.PropertyField(_adjacentUpProperty);
-                EditorGUILayout.PropertyField(_adjacentDownProperty);
-                EditorGUILayout.PropertyField(_adjacentLeftProperty);
-                EditorGUILayout.PropertyField(_adjacentRightProperty);
-            }
+        if (_showAdjacentNodeFields)
+        {
+            EditorGUI.indentLevel++;
+            
+            EditorGUILayout.PropertyField(_adjacentUpProperty, new GUIContent("Up"));
+            EditorGUILayout.PropertyField(_adjacentDownProperty, new GUIContent("Down"));
+            EditorGUILayout.PropertyField(_adjacentLeftProperty, new GUIContent("Left"));
+            EditorGUILayout.PropertyField(_adjacentRightProperty, new GUIContent("Right"));
+            
+            EditorGUI.indentLevel--;
+        }
 
-        EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical ();
     }
 }}
