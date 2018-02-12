@@ -336,6 +336,12 @@ Prefab:
       propertyPath: m_Name
       value: Your Doorstep (Start)
       objectReference: {fileID: 0}
+    - target: {fileID: 114053970959010850, guid: 732f3231bfd62df44a488366a2cfd887,
+        type: 2}
+      propertyPath: _content
+      value: 
+      objectReference: {fileID: 11400000, guid: c638f493ae95f3d439338cd73a7fe932,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 732f3231bfd62df44a488366a2cfd887, type: 2}
   m_IsPrefabParent: 0

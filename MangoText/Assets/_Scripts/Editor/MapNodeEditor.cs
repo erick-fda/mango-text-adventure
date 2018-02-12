@@ -27,26 +27,28 @@ public class MapNodeEditor : Editor
 	/*----------------------------------------------------------------------------------------
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
-	private const string _armUpPropertyName = "_armUp";
-	private const string _armDownPropertyName = "_armDown";
-	private const string _armLeftPropertyName = "_armLeft";
-	private const string _armRightPropertyName = "_armRight";
 	private const string _adjacentUpPropertyName = "_adjacentUp";
 	private const string _adjacentDownPropertyName = "_adjacentDown";
 	private const string _adjacentLeftPropertyName = "_adjacentLeft";
 	private const string _adjacentRightPropertyName = "_adjacentRight";
+    private const string _contentPropertyName = "_content";
+	private const string _armUpPropertyName = "_armUp";
+	private const string _armDownPropertyName = "_armDown";
+	private const string _armLeftPropertyName = "_armLeft";
+	private const string _armRightPropertyName = "_armRight";
 
-    private SerializedProperty _armUpProperty;
-    private SerializedProperty _armDownProperty;
-    private SerializedProperty _armLeftProperty;
-    private SerializedProperty _armRightProperty;
     private SerializedProperty _adjacentUpProperty;
     private SerializedProperty _adjacentDownProperty;
     private SerializedProperty _adjacentLeftProperty;
     private SerializedProperty _adjacentRightProperty;
+    private SerializedProperty _contentProperty;
+    private SerializedProperty _armUpProperty;
+    private SerializedProperty _armDownProperty;
+    private SerializedProperty _armLeftProperty;
+    private SerializedProperty _armRightProperty;
 
-    private bool _showArmFields = false;
     private bool _showAdjacentNodeFields = true;
+    private bool _showArmFields = false;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
@@ -58,14 +60,15 @@ public class MapNodeEditor : Editor
 	----------------------------------------------------------------------------------------*/
     private void OnEnable()
     {
-        _armUpProperty = serializedObject.FindProperty(_armUpPropertyName);
-        _armDownProperty = serializedObject.FindProperty(_armDownPropertyName);
-        _armLeftProperty = serializedObject.FindProperty(_armLeftPropertyName);
-        _armRightProperty = serializedObject.FindProperty(_armRightPropertyName);
         _adjacentUpProperty = serializedObject.FindProperty(_adjacentUpPropertyName);
         _adjacentDownProperty = serializedObject.FindProperty(_adjacentDownPropertyName);
         _adjacentLeftProperty = serializedObject.FindProperty(_adjacentLeftPropertyName);
         _adjacentRightProperty = serializedObject.FindProperty(_adjacentRightPropertyName);
+        _contentProperty = serializedObject.FindProperty(_contentPropertyName);
+        _armUpProperty = serializedObject.FindProperty(_armUpPropertyName);
+        _armDownProperty = serializedObject.FindProperty(_armDownPropertyName);
+        _armLeftProperty = serializedObject.FindProperty(_armLeftPropertyName);
+        _armRightProperty = serializedObject.FindProperty(_armRightPropertyName);
     }
 
     public override void OnInspectorGUI ()
@@ -73,6 +76,11 @@ public class MapNodeEditor : Editor
         serializedObject.Update();
         
         DrawAdjacentNodeList();
+
+        EditorGUILayout.Space();
+        DrawContentField();
+        EditorGUILayout.Space();
+
         DrawArmList();
 
         serializedObject.ApplyModifiedProperties();
@@ -127,5 +135,13 @@ public class MapNodeEditor : Editor
         }
 
         EditorGUILayout.EndVertical ();
+    }
+
+    /**
+        Draws a property field for the map node's content.
+    */
+    private void DrawContentField()
+    {
+        EditorGUILayout.PropertyField(_contentProperty);
     }
 }}

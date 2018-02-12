@@ -34,6 +34,8 @@ public class MapNode : MonoBehaviour
     public MapNode _adjacentDown;
     public MapNode _adjacentLeft;
     public MapNode _adjacentRight;
+
+    public ScreenContent _content;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
