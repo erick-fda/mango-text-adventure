@@ -14,7 +14,6 @@
 ========================================================================================*/
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using MangoText.Constants;
 
 /*========================================================================================
 	GameManager
@@ -90,6 +89,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             MapCamera.transform.position = new Vector3(
                 _currentNode.transform.position.x, _currentNode.transform.position.y, MapCamera.transform.position.z);
+
+            Ui.SetScreenContent(_currentNode._content);
         }
     }
 

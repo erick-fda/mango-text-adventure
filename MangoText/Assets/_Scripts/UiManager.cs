@@ -32,7 +32,7 @@ public class UiManager : MonoBehaviour
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
 	----------------------------------------------------------------------------------------*/
-	public string MainText
+	private string MainText
     {
         get { return _mainText.text; }
 
@@ -56,6 +56,23 @@ public class UiManager : MonoBehaviour
 	/*----------------------------------------------------------------------------------------
 		Instance Methods
 	----------------------------------------------------------------------------------------*/
+    /**
+        Sets the content of UI elements based on the content object passed in.
+    */
+    public void SetScreenContent(ScreenContent content)
+    {
+        if (content == null)
+        {
+            SetDefaultScreenContent();
+            return;
+        }
+
+        MainText = "This node has screen content.";
+    }
+
+    /**
+        Checks for null values in fields not permitted to be null.
+    */
     private void CheckForNullReferences()
     {
         if (_mainText == null)
@@ -63,5 +80,13 @@ public class UiManager : MonoBehaviour
             throw new System.NullReferenceException(
                 "UiManager.CheckForNullReferences: _mainText is not permitted to be null.");
         }
+    }
+
+    /**
+        Sets default screen content.
+    */
+    private void SetDefaultScreenContent()
+    {
+        MainText = "This node does not have screen content.";
     }
 }}
