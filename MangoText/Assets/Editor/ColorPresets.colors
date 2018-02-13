@@ -18,3 +18,5 @@ MonoBehaviour:
     m_Color: {r: 0.10883434, g: 0.18529871, b: 0.24264705, a: 1}
   - m_Name: Map Light
     m_Color: {r: 0.29411763, g: 0.41176465, b: 0.5, a: 1}
+  - m_Name: Map Icon Light
+    m_Color: {r: 0.5242214, g: 0.6280276, b: 0.7058823, a: 1}
