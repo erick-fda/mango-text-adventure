@@ -232,9 +232,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\nPommy ipsum absolute well fit blummin' devonshire cream tea, bow ties
-    are cool chips alright duck. Plum pudding on't goggle box it's cracking flags
-    unhand me sir complete mare down the local, oo ecky thump fancy a cuppa some mothers
+  m_Text: "Pommy ipsum absolute well fit blummin' devonshire cream tea, bow ties are
+    cool chips alright duck. Plum pudding on't goggle box it's cracking flags unhand
+    me sir complete mare down the local, oo ecky thump fancy a cuppa some mothers
     do 'ave 'em guinness, twiglets copped a bollocking pillock tad. Bloody mary Elementary
     my dear Watson god save the queen codswallop Doctor Who picalilly, Weeping Angels
     pulled a right corker the fuzz a bit wonky it's the dogs bollocks ey up duck,
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224664205717041654}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.19080772
+  m_Size: 0.18072706
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -798,8 +798,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5, y: 0}
-  m_SizeDelta: {x: -10, y: 0}
+  m_AnchoredPosition: {x: 2.5, y: 0}
+  m_SizeDelta: {x: -15, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224280135695487434
 RectTransform:

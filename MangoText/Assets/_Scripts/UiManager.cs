@@ -67,7 +67,7 @@ public class UiManager : MonoBehaviour
             content = _nullScreenContent;
         }
 
-        MainText = content.MainText;
+        //MainText = content.MainText;
     }
 
     /**
