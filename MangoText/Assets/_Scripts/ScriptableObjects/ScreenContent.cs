@@ -30,7 +30,19 @@ public class ScreenContent : ScriptableObject
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
 	----------------------------------------------------------------------------------------*/
-	
+	/**
+        Getter for the main text of this screen content.
+    */
+    public string MainText
+    {
+        get
+        {
+            return System.IO.File.ReadAllText(
+                System.IO.Path.Combine(
+                    Application.streamingAssetsPath, 
+                    Constants.ScreenContentMainTextFilePath[_id]));
+        }
+    }
     
 	/*----------------------------------------------------------------------------------------
 		Instance Methods

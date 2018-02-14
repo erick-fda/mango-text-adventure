@@ -38,8 +38,9 @@ namespace MangoText
     /**
         Enum of screen content IDs.
     */
-    public enum ScreenContentId : int
+    public enum ScreenContentId
     {
+        Null,
         Test01,
     }
 
@@ -54,9 +55,10 @@ namespace MangoText
         /**
             Map of screen content names to filenames.
         */
-        static public readonly Dictionary<ScreenContentId, string> ScreenContentFilename = 
+        static public readonly Dictionary<ScreenContentId, string> ScreenContentMainTextFilePath = 
             new Dictionary<ScreenContentId, string>()
         {
-            { ScreenContentId.Test01, "ScreenContents/test01text" },
+            { ScreenContentId.Null, "ScreenContents/sc_null.txt" },
+            { ScreenContentId.Test01, "ScreenContents/test01text.txt" },
         };
 }}

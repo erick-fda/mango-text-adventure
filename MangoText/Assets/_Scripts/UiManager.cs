@@ -26,6 +26,7 @@ public class UiManager : MonoBehaviour
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
     public Text _mainText;
+    public ScreenContent _nullScreenContent;
 
     private ScreenContent _content;
     
@@ -61,13 +62,12 @@ public class UiManager : MonoBehaviour
     */
     public void SetScreenContent(ScreenContent content)
     {
-        if (content == null)
+        if (null == content)
         {
-            SetDefaultScreenContent();
-            return;
+            content = _nullScreenContent;
         }
 
-        MainText = "This node has screen content.";
+        MainText = content.MainText;
     }
 
     /**
@@ -75,18 +75,10 @@ public class UiManager : MonoBehaviour
     */
     private void CheckForNullReferences()
     {
-        if (_mainText == null)
+        if (null == _mainText)
         {
             throw new System.NullReferenceException(
                 "UiManager.CheckForNullReferences: _mainText is not permitted to be null.");
         }
-    }
-
-    /**
-        Sets default screen content.
-    */
-    private void SetDefaultScreenContent()
-    {
-        MainText = "This node does not have screen content.";
     }
 }}
