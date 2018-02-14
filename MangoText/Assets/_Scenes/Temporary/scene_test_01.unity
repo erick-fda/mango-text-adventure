@@ -323,25 +323,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114053970959010850, guid: 732f3231bfd62df44a488366a2cfd887,
-        type: 2}
-      propertyPath: _adjacentRight
-      value: 
-      objectReference: {fileID: 536739428}
-    - target: {fileID: 1813150846501034, guid: 732f3231bfd62df44a488366a2cfd887, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1085510660788466, guid: 732f3231bfd62df44a488366a2cfd887, type: 2}
       propertyPath: m_Name
       value: Your Doorstep (Start)
       objectReference: {fileID: 0}
     - target: {fileID: 114053970959010850, guid: 732f3231bfd62df44a488366a2cfd887,
         type: 2}
-      propertyPath: _content
+      propertyPath: _adjacentRight
       value: 
-      objectReference: {fileID: 11400000, guid: d6c1a8dd77a54e940872b401fbfd5c01,
-        type: 2}
+      objectReference: {fileID: 536739428}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 732f3231bfd62df44a488366a2cfd887, type: 2}
   m_IsPrefabParent: 0
