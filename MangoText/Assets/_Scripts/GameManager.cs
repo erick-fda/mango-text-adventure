@@ -36,19 +36,26 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
 	----------------------------------------------------------------------------------------*/
-    public UiManager Ui
+    /**
+        The map node that currently has the focus.
+    */
+    public MapNode CurrentNode
     {
-        get { return _uiManager; }
+        get { return _currentNode; }
 
         set
         {
-            if (_uiManager != null)
+            if (value == null)
             {
-                throw new System.InvalidOperationException(
-                    "GameManager.Ui.set: Ui is only permitted to be set when it is null.");
+                throw new System.ArgumentNullException("value", "GameManager.CurrentNode.set: CurrentNode cannot be set to null.");
             }
 
-            _uiManager = value;
+            _currentNode = value;
+
+            MapCamera.transform.position = new Vector3(
+                _currentNode.transform.position.x, _currentNode.transform.position.y, MapCamera.transform.position.z);
+
+            Ui.ScreenContent = _currentNode._content;
         }
     }
 
@@ -72,29 +79,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
 
     /**
-        The map node that currently has the focus.
-    */
-    public MapNode CurrentNode
-    {
-        get { return _currentNode; }
-
-        set
-        {
-            if (value == null)
-            {
-                throw new System.ArgumentNullException("value", "GameManager.CurrentNode.set: CurrentNode cannot be set to null.");
-            }
-
-            _currentNode = value;
-
-            MapCamera.transform.position = new Vector3(
-                _currentNode.transform.position.x, _currentNode.transform.position.y, MapCamera.transform.position.z);
-
-            Ui.SetScreenContent(_currentNode._content);
-        }
-    }
-
-    /**
         The index of the map node to receive the focus when the next scene is loaded.
     */
     public int NextStartNodeIndex
@@ -110,6 +94,23 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
 
             _nextStartNodeIndex = value;
+        }
+    }
+
+    /* The GameObject that manages UI. */
+    public UiManager Ui
+    {
+        get { return _uiManager; }
+
+        set
+        {
+            if (_uiManager != null)
+            {
+                throw new System.InvalidOperationException(
+                    "GameManager.Ui.set: Ui is only permitted to be set when it is null.");
+            }
+
+            _uiManager = value;
         }
     }
 

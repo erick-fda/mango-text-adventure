@@ -52,4 +52,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainText: {fileID: 0}
+  _actionButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _nullScreenContent: {fileID: 11400000, guid: 45d3b9d9353775749b576ed92da284b9, type: 2}
