@@ -209,7 +209,7 @@ MonoBehaviour:
   _adjacentDown: {fileID: 0}
   _adjacentLeft: {fileID: 0}
   _adjacentRight: {fileID: 0}
-  _content: {fileID: 11400000, guid: d6c1a8dd77a54e940872b401fbfd5c01, type: 2}
+  _content: {fileID: 0}
 --- !u!212 &212152942787946036
 SpriteRenderer:
   m_ObjectHideFlags: 1
