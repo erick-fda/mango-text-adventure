@@ -27,7 +27,7 @@ public class UiManager : MonoBehaviour
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
     public Text _mainText;
-    public List<Button> _actionButtons;
+    public List<ActionButton> _actionButtons;
     public ScreenContent _nullScreenContent;
 
     private ScreenContent _screenContent;
@@ -51,6 +51,8 @@ public class UiManager : MonoBehaviour
 
             _screenContent = value;
             MainText = value.MainText;
+
+            UpdateActionButtons();
         }
     }
 
@@ -119,6 +121,54 @@ public class UiManager : MonoBehaviour
     */
     private void UpdateActionButtons()
     {
-
+        for (int i = 0; i < _actionButtons.Count; i++)
+        {
+            /* If this is a movement button. */
+            if ( System.Array.IndexOf(System.Enum.GetValues(typeof(MovementButtonIndex)), (MovementButtonIndex)i) > -1 )
+            {
+                UpdateMovementButton(i);
+            }
+            else
+            {
+                _actionButtons[i].gameObject.SetActive(false);
+            }
+        }
     }
+
+    /**
+        Updates the the movement button with the given index.
+    */
+    private void UpdateMovementButton(int index)
+    {
+        switch ((MovementButtonIndex)index)
+        {
+            case MovementButtonIndex.Up :
+                _actionButtons[index].SetText(Constants.MovementButtonUpMainText, 
+                    Constants.MovementButtonUpKeyboardHint);
+                break;
+
+            case MovementButtonIndex.Down :
+                _actionButtons[index].SetText(Constants.MovementButtonDownMainText, 
+                    Constants.MovementButtonDownKeyboardHint);
+                break;
+
+            case MovementButtonIndex.Left :
+                _actionButtons[index].SetText(Constants.MovementButtonLeftMainText, 
+                    Constants.MovementButtonLeftKeyboardHint);
+                break;
+
+            case MovementButtonIndex.Right :
+                _actionButtons[index].SetText(Constants.MovementButtonRightMainText, 
+                    Constants.MovementButtonRightKeyboardHint);
+                break;
+
+            default :
+                throw new System.ArgumentException(string.Format(
+                    "UiManager.UpdateMovementButton: {0} is not a valid movement button index.", index), "index");
+        }
+
+        _actionButtons[index].gameObject.SetActive(true);
+    }
+
+
 }}

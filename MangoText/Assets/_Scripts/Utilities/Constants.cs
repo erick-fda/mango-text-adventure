@@ -23,7 +23,7 @@ namespace MangoText
     /*----------------------------------------------------------------------------------------
         Enums
     ----------------------------------------------------------------------------------------*/
-    /**
+    /*
         Enum of scene indeces.
     */
     public enum SceneId : int
@@ -32,10 +32,7 @@ namespace MangoText
         TestScene01,
     }
 
-    /*----------------------------------------------------------------------------------------
-        Screen Contents
-    ----------------------------------------------------------------------------------------*/
-    /**
+    /*
         Enum of screen content IDs.
     */
     public enum ScreenContentId
@@ -44,15 +41,45 @@ namespace MangoText
         Test01,
     }
 
+    /*
+        Enum of movement button indices.
+    */
+    public enum MovementButtonIndex : int
+    {
+        Up = 6, 
+        Left = 10, 
+        Down = 11, 
+        Right = 12,
+    }
+
     /*========================================================================================
         Class Constants
     ========================================================================================*/
     public static class Constants
     {
         /*----------------------------------------------------------------------------------------
-            Screen Contents
+            Consts
         ----------------------------------------------------------------------------------------*/
-        /**
+        /*
+            Action button main texts.
+        */
+        public const string MovementButtonUpMainText = "North";
+        public const string MovementButtonDownMainText = "South";
+        public const string MovementButtonLeftMainText = "West";
+        public const string MovementButtonRightMainText = "East";
+
+        /*
+            Action button keyboard hints.
+        */
+        public const string MovementButtonUpKeyboardHint = "w";
+        public const string MovementButtonDownKeyboardHint = "s";
+        public const string MovementButtonLeftKeyboardHint = "a";
+        public const string MovementButtonRightKeyboardHint = "d";
+
+        /*----------------------------------------------------------------------------------------
+            Collections
+        ----------------------------------------------------------------------------------------*/
+        /*
             Map of screen content names to filenames.
         */
         static public readonly Dictionary<ScreenContentId, string> ScreenContentMainTextFilePath = 
