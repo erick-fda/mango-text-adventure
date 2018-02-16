@@ -71,10 +71,16 @@ namespace MangoText
         /*
             Action button keyboard hints.
         */
-        public const string MovementButtonUpKeyboardHint = "w";
-        public const string MovementButtonDownKeyboardHint = "s";
-        public const string MovementButtonLeftKeyboardHint = "a";
-        public const string MovementButtonRightKeyboardHint = "d";
+        public const string MovementButtonUpHint = "w";
+        public const string MovementButtonDownHint = "s";
+        public const string MovementButtonLeftHint = "a";
+        public const string MovementButtonRightHint = "d";
+
+        /*
+            Colors
+        */
+        static public readonly Color MovementButtonMainColor = new Color(0.122f, 0.322f, 0.475f);
+        static public readonly Color MovementButtonHintColor = new Color(0.212f, 0.4f, 0.541f);
 
         /*----------------------------------------------------------------------------------------
             Collections

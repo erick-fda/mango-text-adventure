@@ -35,9 +35,7 @@ public class UiManager : MonoBehaviour
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
 	----------------------------------------------------------------------------------------*/
-    /**
-        The content for UI elements such as text, images, and buttons.
-    */
+    /* The content for UI elements such as text, images, and buttons. */
     public ScreenContent ScreenContent
     {
         get { return _screenContent; }
@@ -56,9 +54,7 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    /**
-        The main text area.
-    */
+    /* The main text area. */
 	private string MainText
     {
         get { return _mainText.text; }
@@ -144,22 +140,22 @@ public class UiManager : MonoBehaviour
         {
             case MovementButtonIndex.Up :
                 _actionButtons[index].SetText(Constants.MovementButtonUpMainText, 
-                    Constants.MovementButtonUpKeyboardHint);
+                    Constants.MovementButtonUpHint);
                 break;
 
             case MovementButtonIndex.Down :
                 _actionButtons[index].SetText(Constants.MovementButtonDownMainText, 
-                    Constants.MovementButtonDownKeyboardHint);
+                    Constants.MovementButtonDownHint);
                 break;
 
             case MovementButtonIndex.Left :
                 _actionButtons[index].SetText(Constants.MovementButtonLeftMainText, 
-                    Constants.MovementButtonLeftKeyboardHint);
+                    Constants.MovementButtonLeftHint);
                 break;
 
             case MovementButtonIndex.Right :
                 _actionButtons[index].SetText(Constants.MovementButtonRightMainText, 
-                    Constants.MovementButtonRightKeyboardHint);
+                    Constants.MovementButtonRightHint);
                 break;
 
             default :
@@ -167,7 +163,10 @@ public class UiManager : MonoBehaviour
                     "UiManager.UpdateMovementButton: {0} is not a valid movement button index.", index), "index");
         }
 
-        _actionButtons[index].gameObject.SetActive(true);
+        ActionButton button = _actionButtons[index];
+        button.Color = Constants.MovementButtonMainColor;
+        button.HintAreaColor = Constants.MovementButtonHintColor;
+        button.gameObject.SetActive(true);
     }
 
 

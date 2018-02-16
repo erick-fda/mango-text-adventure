@@ -26,37 +26,59 @@ public class ActionButton : MonoBehaviour
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
 	public Text _mainText;
-    public Text _keyboardHintText;
+    public Image _hintArea;
+    public Text _hintText;
+
+    private Image _mainArea;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
 	----------------------------------------------------------------------------------------*/
-	public string MainText
+	/* The button's main text. */
+    public string MainText
     {
         get { return _mainText.text; }
         set { _mainText.text = value; }
     }
 
+    /* The color of the main button area. */
+    public Color Color
+    {
+        get { return _mainArea.color; }
+        set { _mainArea.color = value; }
+    }
+
+    /* The color of the keyboard hint image area. */
+    public Color HintAreaColor
+    {
+        get { return _hintArea.color; }
+        set { _hintArea.color = value; }
+    }
+
+    /* The button's keyboard hint text. */
     public string KeyboardHintText
     {
-        get { return _keyboardHintText.text; }
-        set { _keyboardHintText.text = value; }
+        get { return _hintText.text; }
+        set { _hintText.text = value; }
     }
     
 	/*----------------------------------------------------------------------------------------
 		MonoBehaviour Methods
 	----------------------------------------------------------------------------------------*/
-    /**
-        Sets the main and keyboard hint text for this action button.
-    */
-    public void SetText(string mainText, string keyboardHintText)
+    private void Awake()
     {
-        MainText = mainText;
-        KeyboardHintText = keyboardHintText;
+        _mainArea = GetComponent<Image>();
     }
     
 	/*----------------------------------------------------------------------------------------
 		Instance Methods
 	----------------------------------------------------------------------------------------*/
-	
+    /**
+        Sets the main and keyboard hint text for this action button.
+    */
+    public void SetText(string mainText, string hintText)
+    {
+        MainText = mainText;
+        KeyboardHintText = hintText;
+    }
 }}
