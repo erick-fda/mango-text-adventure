@@ -52,6 +52,28 @@ namespace MangoText
         Right = 12,
     }
 
+    /*
+        Enum of move directions.
+    */
+    public enum MoveDirection
+    {
+        Up, 
+        Down, 
+        Left, 
+        Right,
+    }
+
+    /*
+        Enum of keyboard input names.
+    */
+    public enum Key
+    {
+        MoveUp,
+        MoveDown,
+        MoveLeft, 
+        MoveRight,
+    }
+
     /*========================================================================================
         Class Constants
     ========================================================================================*/
@@ -86,7 +108,7 @@ namespace MangoText
             Collections
         ----------------------------------------------------------------------------------------*/
         /*
-            Map of screen content names to filenames.
+            Dictionary of screen content names to filenames.
         */
         static public readonly Dictionary<ScreenContentId, string> ScreenContentMainTextFilePath = 
             new Dictionary<ScreenContentId, string>()
@@ -94,4 +116,17 @@ namespace MangoText
             { ScreenContentId.Null, "ScreenContents/sc_null.txt" },
             { ScreenContentId.Test01, "ScreenContents/test01text.txt" },
         };
-}}
+
+        /*
+            Dictionary of keyboard input names to keycodes.
+        */
+        static public readonly Dictionary<Key, KeyCode> KeyCodeForKey = 
+            new Dictionary<Key, KeyCode>()
+        {
+            { Key.MoveUp, KeyCode.W },
+            { Key.MoveDown, KeyCode.S },
+            { Key.MoveLeft, KeyCode.A },
+            { Key.MoveRight, KeyCode.D },
+        };
+    }
+}

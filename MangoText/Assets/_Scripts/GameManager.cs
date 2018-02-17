@@ -126,11 +126,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         LoadScene(_initialScene, _initialSceneNode);
     }
-
-    private void Update()
-    {
-        Move();
-    }
     
 	private void OnDestroy()
     {
@@ -151,48 +146,39 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
 
     /**
-        Moves the player to an adjacent node if appropriate input is received.
+        Moves the player to the adjacent node in the given direction if it exists and is 
+        accessible.
     */
-    private void Move()
+    public void Move(MoveDirection direction)
     {
-        /* Move up. */
-        if (Input.GetKeyDown(KeyCode.W))
+        MapNode nodeToMoveTo;
+
+        switch(direction)
         {
-            if (CurrentNode._adjacentUp != null)
-            {
-                CurrentNode = CurrentNode._adjacentUp;
-                return;
-            }
+            case MoveDirection.Up :
+                nodeToMoveTo = CurrentNode._adjacentUp;
+                break;
+
+            case MoveDirection.Down :
+                nodeToMoveTo = CurrentNode._adjacentDown;
+                break;
+
+            case MoveDirection.Left :
+                nodeToMoveTo = CurrentNode._adjacentLeft;
+                break;
+
+            case MoveDirection.Right :
+                nodeToMoveTo = CurrentNode._adjacentRight;
+                break;
+
+            default :
+                throw new System.ArgumentException(
+                    "GameManager.Move: Parameter direction was not a valid MoveDirection value.", "direction");
         }
-        
-        /* Move down. */
-        if (Input.GetKeyDown(KeyCode.S))
+
+        if (null != nodeToMoveTo)
         {
-            if (CurrentNode._adjacentDown != null)
-            {
-                CurrentNode = CurrentNode._adjacentDown;
-                return;
-            }
-        }
-        
-        /* Move left. */
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (CurrentNode._adjacentLeft != null)
-            {
-                CurrentNode = CurrentNode._adjacentLeft;
-                return;
-            }
-        }
-        
-        /* Move right. */
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (CurrentNode._adjacentRight != null)
-            {
-                CurrentNode = CurrentNode._adjacentRight;
-                return;
-            }
+            CurrentNode = nodeToMoveTo;
         }
     }
 }}
