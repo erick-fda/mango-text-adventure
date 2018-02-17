@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/scene_ui_test.unity
+- path: Assets/_Scenes/scene_persistent.unity
   isLoaded: 1
   isActive: 1
