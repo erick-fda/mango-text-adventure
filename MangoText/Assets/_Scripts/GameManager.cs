@@ -33,7 +33,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private MapCamera _mapCamera;
     private MapNode _currentNode;
     private int _nextNodeIndex;
-    private ScreenContent _screenContent;
+    private Stack<ScreenContent> _screenContentStack;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
@@ -53,13 +53,21 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
 
             _currentNode = value;
-            _screenContent = _currentNode.ScreenContent;
+            ReplaceAllScreenContent(_currentNode.ScreenContent);
 
             Ui.ScreenContent = _currentNode.ScreenContent;
 
             MapCamera.transform.position = new Vector3(
                 _currentNode.transform.position.x, _currentNode.transform.position.y, MapCamera.transform.position.z);
         }
+    }
+
+    /**
+        The screen content currently displayed.
+    */
+    public ScreenContent ScreenContent
+    {
+        get { return _screenContentStack.Peek(); }
     }
 
     /**
@@ -123,6 +131,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private void Awake()
     {
         EnforceSingletonCreation(this);
+        _screenContentStack = new Stack<ScreenContent>();
     }
 
     private void Start()
@@ -155,7 +164,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void Move(MoveDirection direction)
     {
         /* Do nothing if the player can't move from the current screen. */
-        if (false == _screenContent._canPlayerMove)
+        if (false == ScreenContent._canPlayerMove)
         {
             return;
         }
@@ -189,5 +198,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             CurrentNode = nodeToMoveTo;
         }
+    }
+
+    /**
+        Replaces the entire screen content stack with the given content.
+    */
+    public void ReplaceAllScreenContent(ScreenContent newScreenContent)
+    {
+        if (null == newScreenContent)
+        {
+            throw new System.ArgumentNullException("newScreenContent", 
+                "GameManager.ReplaceAllScreenContent: newScreenContent cannot be null.");
+        }
+
+        _screenContentStack.Clear();
+        _screenContentStack.Push(newScreenContent);
     }
 }}
