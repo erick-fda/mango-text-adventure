@@ -74,25 +74,11 @@ public class UiManager : MonoBehaviour
     {
         CheckInvariant();
         GameManager.Instance.Ui = this;
-        UpdateActionButtons();
     }
     
 	/*----------------------------------------------------------------------------------------
 		Instance Methods
 	----------------------------------------------------------------------------------------*/
-    /**
-        Sets the content of UI elements based on the content object passed in.
-    */
-    public void SetScreenContent(ScreenContent content)
-    {
-        if (null == content)
-        {
-            content = _nullScreenContent;
-        }
-
-        MainText = content.MainText;
-    }
-
     /**
         Check for invalid field values.
     */
@@ -117,14 +103,25 @@ public class UiManager : MonoBehaviour
     */
     private void UpdateActionButtons()
     {
-        for (int i = 0; i < _actionButtons.Count; i++)
+        /* Include movement buttons if the player can move. */
+        if (ScreenContent._canPlayerMove)
         {
-            /* If this is a movement button. */
-            if ( System.Array.IndexOf(System.Enum.GetValues(typeof(MovementButtonIndex)), (MovementButtonIndex)i) > -1 )
+            for (int i = 0; i < _actionButtons.Count; i++)
             {
-                UpdateMovementButton(i);
+                /* If this is a movement button. */
+                if ( System.Array.IndexOf(System.Enum.GetValues(typeof(MovementButtonIndex)), (MovementButtonIndex)i) > -1 )
+                {
+                    UpdateMovementButton(i);
+                }
+                else
+                {
+                    _actionButtons[i].gameObject.SetActive(false);
+                }
             }
-            else
+        }
+        else
+        {
+            for (int i = 0; i < _actionButtons.Count; i++)
             {
                 _actionButtons[i].gameObject.SetActive(false);
             }

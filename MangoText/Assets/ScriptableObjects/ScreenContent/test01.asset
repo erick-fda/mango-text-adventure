@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: test01
   m_EditorClassIdentifier: 
   _id: 1
+  _canPlayerMove: 1

@@ -26,6 +26,7 @@ public class ScreenContent : ScriptableObject
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
 	public ScreenContentId _id;
+    public bool _canPlayerMove = true;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties

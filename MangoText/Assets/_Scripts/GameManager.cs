@@ -14,6 +14,7 @@
 ========================================================================================*/
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 /*========================================================================================
 	GameManager
@@ -32,6 +33,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private MapCamera _mapCamera;
     private MapNode _currentNode;
     private int _nextStartNodeIndex;
+    private ScreenContent _screenContent;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
@@ -51,11 +53,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             }
 
             _currentNode = value;
+            _screenContent = _currentNode.ScreenContent;
+
+            Ui.ScreenContent = _currentNode.ScreenContent;
 
             MapCamera.transform.position = new Vector3(
                 _currentNode.transform.position.x, _currentNode.transform.position.y, MapCamera.transform.position.z);
-
-            Ui.ScreenContent = _currentNode._content;
         }
     }
 
@@ -151,6 +154,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     */
     public void Move(MoveDirection direction)
     {
+        /* Do nothing if the player can't move from the current screen. */
+        if (false == _screenContent._canPlayerMove)
+        {
+            return;
+        }
+
         MapNode nodeToMoveTo;
 
         switch(direction)

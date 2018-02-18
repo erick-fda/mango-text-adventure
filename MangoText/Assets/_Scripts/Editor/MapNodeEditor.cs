@@ -31,7 +31,7 @@ public class MapNodeEditor : Editor
 	private const string _adjacentDownPropertyName = "_adjacentDown";
 	private const string _adjacentLeftPropertyName = "_adjacentLeft";
 	private const string _adjacentRightPropertyName = "_adjacentRight";
-    private const string _contentPropertyName = "_content";
+    private const string _screenContentPropertyName = "_screenContent";
 	private const string _armUpPropertyName = "_armUp";
 	private const string _armDownPropertyName = "_armDown";
 	private const string _armLeftPropertyName = "_armLeft";
@@ -41,7 +41,7 @@ public class MapNodeEditor : Editor
     private SerializedProperty _adjacentDownProperty;
     private SerializedProperty _adjacentLeftProperty;
     private SerializedProperty _adjacentRightProperty;
-    private SerializedProperty _contentProperty;
+    private SerializedProperty _screenContentProperty;
     private SerializedProperty _armUpProperty;
     private SerializedProperty _armDownProperty;
     private SerializedProperty _armLeftProperty;
@@ -64,7 +64,7 @@ public class MapNodeEditor : Editor
         _adjacentDownProperty = serializedObject.FindProperty(_adjacentDownPropertyName);
         _adjacentLeftProperty = serializedObject.FindProperty(_adjacentLeftPropertyName);
         _adjacentRightProperty = serializedObject.FindProperty(_adjacentRightPropertyName);
-        _contentProperty = serializedObject.FindProperty(_contentPropertyName);
+        _screenContentProperty = serializedObject.FindProperty(_screenContentPropertyName);
         _armUpProperty = serializedObject.FindProperty(_armUpPropertyName);
         _armDownProperty = serializedObject.FindProperty(_armDownPropertyName);
         _armLeftProperty = serializedObject.FindProperty(_armLeftPropertyName);
@@ -142,6 +142,6 @@ public class MapNodeEditor : Editor
     */
     private void DrawContentField()
     {
-        EditorGUILayout.PropertyField(_contentProperty);
+        EditorGUILayout.PropertyField(_screenContentProperty);
     }
 }}

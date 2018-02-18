@@ -35,12 +35,23 @@ public class MapNode : MonoBehaviour
     public MapNode _adjacentLeft;
     public MapNode _adjacentRight;
 
-    public ScreenContent _content;
+    public ScreenContent _screenContent;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
 	----------------------------------------------------------------------------------------*/
-	
+	public ScreenContent ScreenContent
+    {
+        get
+        {
+            return (null == _screenContent) ? GameManager.Instance.Ui._nullScreenContent : _screenContent;
+        }
+
+        set
+        {
+            _screenContent = value;
+        }
+    }
     
 	/*----------------------------------------------------------------------------------------
 		MonoBehaviour Methods
