@@ -17,12 +17,45 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 /*========================================================================================
+	Enums
+========================================================================================*/
+/*
+    Enum of movement button indices.
+*/
+public enum MovementButtonIndex : int
+{
+    Up = 6, 
+    Left = 10, 
+    Down = 11, 
+    Right = 12,
+}
+
+/*========================================================================================
 	MyMonoBehaviour
 ========================================================================================*/
 namespace MangoText
 {
 public class UiManager : MonoBehaviour
 {
+	/*----------------------------------------------------------------------------------------
+		Static Fields
+	----------------------------------------------------------------------------------------*/
+    /*
+        Action button main texts.
+    */
+    public const string MovementButtonUpMainText = "North";
+    public const string MovementButtonDownMainText = "South";
+    public const string MovementButtonLeftMainText = "West";
+    public const string MovementButtonRightMainText = "East";
+
+    /*
+        Action button keyboard hints.
+    */
+    public const string MovementButtonUpHint = "w";
+    public const string MovementButtonDownHint = "s";
+    public const string MovementButtonLeftHint = "a";
+    public const string MovementButtonRightHint = "d";
+
 	/*----------------------------------------------------------------------------------------
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
@@ -136,23 +169,23 @@ public class UiManager : MonoBehaviour
         switch ((MovementButtonIndex)index)
         {
             case MovementButtonIndex.Up :
-                _actionButtons[index].SetText(Constants.MovementButtonUpMainText, 
-                    Constants.MovementButtonUpHint);
+                _actionButtons[index].SetText(MovementButtonUpMainText, 
+                    MovementButtonUpHint);
                 break;
 
             case MovementButtonIndex.Down :
-                _actionButtons[index].SetText(Constants.MovementButtonDownMainText, 
-                    Constants.MovementButtonDownHint);
+                _actionButtons[index].SetText(MovementButtonDownMainText, 
+                    MovementButtonDownHint);
                 break;
 
             case MovementButtonIndex.Left :
-                _actionButtons[index].SetText(Constants.MovementButtonLeftMainText, 
-                    Constants.MovementButtonLeftHint);
+                _actionButtons[index].SetText(MovementButtonLeftMainText, 
+                    MovementButtonLeftHint);
                 break;
 
             case MovementButtonIndex.Right :
-                _actionButtons[index].SetText(Constants.MovementButtonRightMainText, 
-                    Constants.MovementButtonRightHint);
+                _actionButtons[index].SetText(MovementButtonRightMainText, 
+                    MovementButtonRightHint);
                 break;
 
             default :
