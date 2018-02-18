@@ -32,7 +32,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 	private UiManager _uiManager;
     private MapCamera _mapCamera;
     private MapNode _currentNode;
-    private int _nextStartNodeIndex;
+    private int _nextNodeIndex;
     private ScreenContent _screenContent;
     
 	/*----------------------------------------------------------------------------------------
@@ -84,9 +84,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     /**
         The index of the map node to receive the focus when the next scene is loaded.
     */
-    public int NextStartNodeIndex
+    public int NextNodeIndex
     {
-        get { return _nextStartNodeIndex; }
+        get { return _nextNodeIndex; }
 
         private set
         {
@@ -96,7 +96,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     "value", "GameManager.NextStartNode.set: NextStartNode must be non-negative.");
             }
 
-            _nextStartNodeIndex = value;
+            _nextNodeIndex = value;
         }
     }
 
@@ -144,7 +144,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     */
     private void LoadScene(SceneId sceneID, int startNodeIndex)
     {
-        NextStartNodeIndex = startNodeIndex;
+        NextNodeIndex = startNodeIndex;
         SceneManager.LoadScene((int)sceneID);
     }
 

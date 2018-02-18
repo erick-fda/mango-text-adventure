@@ -25,7 +25,7 @@ public class Map : MonoBehaviour
 	/*----------------------------------------------------------------------------------------
 		Instance Fields
 	----------------------------------------------------------------------------------------*/
-	public List<MapNode> _startNodes;
+	public List<MapNode> _nodes;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
@@ -37,7 +37,7 @@ public class Map : MonoBehaviour
 	----------------------------------------------------------------------------------------*/
     private void Start()
     {
-        GameManager.Instance.CurrentNode = _startNodes[GameManager.Instance.NextStartNodeIndex];
+        GameManager.Instance.CurrentNode = _nodes[GameManager.Instance.NextNodeIndex];
     }
     
 	/*----------------------------------------------------------------------------------------

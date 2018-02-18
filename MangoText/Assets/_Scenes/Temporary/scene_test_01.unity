@@ -398,8 +398,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270953ae78417c9409c7af8194925543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startNodes:
+  _nodes:
   - {fileID: 1091904851}
+  - {fileID: 536739428}
+  - {fileID: 1657771790}
+  - {fileID: 968840980}
   - {fileID: 2119773242}
 --- !u!1001 &1657771788
 Prefab:
