@@ -54,8 +54,10 @@ namespace MangoText
         /*
             Colors
         */
-        static public readonly Color MovementButtonMainColor = new Color(0.122f, 0.322f, 0.475f);
-        static public readonly Color MovementButtonHintColor = new Color(0.212f, 0.4f, 0.541f);
+        static public readonly Color ActionButtonMovementColor = new Color(0.2f, 0.2f, 0.5f);
+        static public readonly Color ActionButtonMovementHintColor = new Color(0.25f, 0.25f, 0.6f);
+        static public readonly Color ActionButtonInactiveColor = new Color(0.2f, 0.2f, 0.3f);
+        static public readonly Color ActionButtonInactiveHintColor = new Color(0.25f, 0.25f, 0.35f);
 
         /*----------------------------------------------------------------------------------------
             Collections

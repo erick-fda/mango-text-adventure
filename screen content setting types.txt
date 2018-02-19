@@ -1,0 +1,9 @@
+
+replace only current screen content (top of stack cleared, new content provided) -- C
+replace all but bottom with new content (all but bottom of stack cleared, new content provided) -- B
+replace ALL screen content with new content (stack cleared, new content provided) -- A
+
+pop current screen content (top of stack cleared) -- C
+pop all but bottom (all but bottom of stack cleared) -- B
+
+push new content (stack retained, new content provided) -- D

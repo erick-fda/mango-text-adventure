@@ -148,7 +148,7 @@ public class UiManager : MonoBehaviour
                 }
                 else
                 {
-                    _actionButtons[i].gameObject.SetActive(false);
+                    UpdateSingleActionButton(i);
                 }
             }
         }
@@ -156,7 +156,7 @@ public class UiManager : MonoBehaviour
         {
             for (int i = 0; i < _actionButtons.Count; i++)
             {
-                _actionButtons[i].gameObject.SetActive(false);
+                UpdateSingleActionButton(i);
             }
         }
     }
@@ -194,10 +194,18 @@ public class UiManager : MonoBehaviour
         }
 
         ActionButton button = _actionButtons[index];
-        button.Color = Constants.MovementButtonMainColor;
-        button.HintAreaColor = Constants.MovementButtonHintColor;
-        button.gameObject.SetActive(true);
+        button.Color = Constants.ActionButtonMovementColor;
+        button.HintAreaColor = Constants.ActionButtonMovementHintColor;
     }
 
-
+    /**
+        Updates the action button with the given index.
+    */
+    private void UpdateSingleActionButton(int index)
+    {
+        ActionButton button = _actionButtons[index];
+        button.SetText(string.Empty, string.Empty);
+        button.Color = Constants.ActionButtonInactiveColor;
+        button.HintAreaColor = Constants.ActionButtonInactiveHintColor;
+    }
 }}
