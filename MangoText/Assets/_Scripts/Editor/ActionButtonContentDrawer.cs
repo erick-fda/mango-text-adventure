@@ -26,7 +26,7 @@ public class ActionButtonContentDrawer : PropertyDrawer
     /*----------------------------------------------------------------------------------------
         Static Fields
     ----------------------------------------------------------------------------------------*/
-    private static readonly float _drawerHeight = EditorGUIUtility.singleLineHeight * 2;
+    private static readonly float _maxDrawerHeight = EditorGUIUtility.singleLineHeight * 2;
 
     private const string _mainTextPropertyName = "_mainText";
     private const string _hintTextPropertyName = "_hintText";
@@ -54,7 +54,10 @@ public class ActionButtonContentDrawer : PropertyDrawer
         int externalIndentLevel = EditorGUI.indentLevel;
         EditorGUI.indentLevel = 0;
 
-        //if (EditorGUILayout.Foldout())
+        property.isExpanded = EditorGUI.Foldout(position, property.isExpanded, GUIContent.none);
+
+        if (property.isExpanded)
+        {
             /* Main text */
             Rect mainTextRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
             EditorGUI.PropertyField(mainTextRect, property.FindPropertyRelative(_mainTextPropertyName), _mainTextPropertyLabel);
@@ -62,6 +65,7 @@ public class ActionButtonContentDrawer : PropertyDrawer
             /* Hint text */
             Rect hintTextRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight, position.width, EditorGUIUtility.singleLineHeight);
             EditorGUI.PropertyField(hintTextRect, property.FindPropertyRelative(_hintTextPropertyName), _hintTextPropertyLabel);
+        }
 
         EditorGUI.indentLevel = externalIndentLevel;
         EditorGUI.EndProperty();
@@ -72,7 +76,14 @@ public class ActionButtonContentDrawer : PropertyDrawer
     */
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        return _drawerHeight;
+        if (property.isExpanded)
+        {
+            return _maxDrawerHeight;
+        }
+        else
+        {
+            return EditorGUIUtility.singleLineHeight;
+        }
     }
     
     /*----------------------------------------------------------------------------------------
