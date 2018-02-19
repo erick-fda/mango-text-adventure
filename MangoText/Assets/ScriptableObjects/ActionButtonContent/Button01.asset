@@ -8,13 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97568d71ce6c8a848a318d1136926988, type: 3}
-  m_Name: test01
+  m_Script: {fileID: 11500000, guid: 528d0db0101a8e54fb82ae54ab75dd2b, type: 3}
+  m_Name: Button01
   m_EditorClassIdentifier: 
-  _id: 1
-  _canPlayerMove: 1
-  _actionButtonContents:
-  - _mainText: 
-    _hintText: 
-  - _mainText: 
-    _hintText: 
