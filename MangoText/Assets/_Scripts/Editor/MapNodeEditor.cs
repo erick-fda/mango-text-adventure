@@ -76,8 +76,8 @@ public class MapNodeEditor : Editor
         serializedObject.Update();
         
         DrawAdjacentNodeList();
-
         EditorGUILayout.Space();
+        
         DrawContentField();
         EditorGUILayout.Space();
 

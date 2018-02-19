@@ -54,10 +54,10 @@ namespace MangoText
         /*
             Colors
         */
-        static public readonly Color ActionButtonMovementColor = new Color(0.2f, 0.2f, 0.5f);
-        static public readonly Color ActionButtonMovementHintColor = new Color(0.25f, 0.25f, 0.6f);
-        static public readonly Color ActionButtonInactiveColor = new Color(0.2f, 0.2f, 0.3f);
-        static public readonly Color ActionButtonInactiveHintColor = new Color(0.25f, 0.25f, 0.35f);
+        public static readonly Color ActionButtonMovementColor = new Color(0.2f, 0.2f, 0.5f);
+        public static readonly Color ActionButtonMovementHintColor = new Color(0.25f, 0.25f, 0.6f);
+        public static readonly Color ActionButtonInactiveColor = new Color(0.2f, 0.2f, 0.3f);
+        public static readonly Color ActionButtonInactiveHintColor = new Color(0.25f, 0.25f, 0.35f);
 
         /*----------------------------------------------------------------------------------------
             Collections
@@ -65,7 +65,7 @@ namespace MangoText
         /*
             Dictionary of screen content names to filenames.
         */
-        static public readonly Dictionary<ScreenContentId, string> ScreenContentMainTextFilePath = 
+        public static readonly Dictionary<ScreenContentId, string> ScreenContentMainTextFilePath = 
             new Dictionary<ScreenContentId, string>()
         {
             { ScreenContentId.Null, "ScreenContents/sc_null.txt" },

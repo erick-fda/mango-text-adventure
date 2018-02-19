@@ -13,6 +13,7 @@
 	Dependencies
 ========================================================================================*/
 using UnityEngine;
+using System.Collections.Generic;
 
 /*========================================================================================
 	Enums
@@ -39,6 +40,7 @@ public class ScreenContent : ScriptableObject
 	----------------------------------------------------------------------------------------*/
 	public ScreenContentId _id;
     public bool _canPlayerMove = true;
+    public List<ActionButtonContent> _actionButtonContents;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
