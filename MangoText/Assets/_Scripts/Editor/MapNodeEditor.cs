@@ -47,8 +47,15 @@ public class MapNodeEditor : Editor
     private SerializedProperty _armLeftProperty;
     private SerializedProperty _armRightProperty;
 
-    private bool _showAdjacentNodeFields = true;
-    private bool _showArmFields = false;
+    private const string _adjacentNodesFoldoutLabel = "Adjacent Nodes";
+    private const string _armsFoldoutLabel = "Arms";
+    private static readonly GUIContent _adjacentUpPropertyLabel = new GUIContent("Up");
+    private static readonly GUIContent _adjacentDownPropertyLabel = new GUIContent("Down");
+    private static readonly GUIContent _adjacentLeftPropertyLabel = new GUIContent("Left");
+    private static readonly GUIContent _adjacentRightPropertyLabel = new GUIContent("Right");
+
+    private bool _showAdjacentNodesFoldout = true;
+    private bool _showArmsFoldout = false;
     
 	/*----------------------------------------------------------------------------------------
 		Instance Properties
@@ -77,7 +84,7 @@ public class MapNodeEditor : Editor
         
         DrawAdjacentNodeList();
         EditorGUILayout.Space();
-        
+
         DrawContentField();
         EditorGUILayout.Space();
 
@@ -96,9 +103,9 @@ public class MapNodeEditor : Editor
     {
         EditorGUILayout.BeginVertical();
         
-        _showArmFields = EditorGUILayout.Foldout(_showArmFields, "Arms");
+        _showArmsFoldout = EditorGUILayout.Foldout(_showArmsFoldout, _armsFoldoutLabel, true);
 
-        if (_showArmFields)
+        if (_showArmsFoldout)
         {
             EditorGUI.indentLevel++;
 
@@ -120,16 +127,16 @@ public class MapNodeEditor : Editor
     {
         EditorGUILayout.BeginVertical();
         
-        _showAdjacentNodeFields = EditorGUILayout.Foldout(_showAdjacentNodeFields, "Adjacent Nodes");
+        _showAdjacentNodesFoldout = EditorGUILayout.Foldout(_showAdjacentNodesFoldout, _adjacentNodesFoldoutLabel, true);
 
-        if (_showAdjacentNodeFields)
+        if (_showAdjacentNodesFoldout)
         {
             EditorGUI.indentLevel++;
             
-            EditorGUILayout.PropertyField(_adjacentUpProperty, new GUIContent("Up"));
-            EditorGUILayout.PropertyField(_adjacentDownProperty, new GUIContent("Down"));
-            EditorGUILayout.PropertyField(_adjacentLeftProperty, new GUIContent("Left"));
-            EditorGUILayout.PropertyField(_adjacentRightProperty, new GUIContent("Right"));
+            EditorGUILayout.PropertyField(_adjacentUpProperty, _adjacentUpPropertyLabel);
+            EditorGUILayout.PropertyField(_adjacentDownProperty, _adjacentDownPropertyLabel);
+            EditorGUILayout.PropertyField(_adjacentLeftProperty, _adjacentLeftPropertyLabel);
+            EditorGUILayout.PropertyField(_adjacentRightProperty, _adjacentRightPropertyLabel);
             
             EditorGUI.indentLevel--;
         }
